@@ -11,7 +11,7 @@ let service = new chrome.ServiceBuilder(path).build();
 const chromeOptions = new chrome.Options();
 chrome.setDefaultService(service);
 
-describe("Selenium", () => {
+describe("Uinsure Home", () => {
 
   beforeEach(async () => {
     driver = new Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
