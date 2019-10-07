@@ -18,7 +18,7 @@ This exercise is split in to two parts as described below. Any functionality rel
 ### Part 1 
 The aim of this exercise is to add additional tests for the functionality of the login page. Some tests have been added a starting point, one of which should be failing.
 
-Things to consider:
+Things to do:
  - Implement the failing test
  - Add tests for all validation messages / error cases
  - Add tests for all login page functionality e.g. clicking "back", or "forgot password"
