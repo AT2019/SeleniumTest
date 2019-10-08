@@ -1,7 +1,6 @@
 import { By } from "selenium-webdriver";
 
 export class LoginPage {
-   
   constructor(driver) {
     this.driver = driver;
   }
@@ -12,17 +11,21 @@ export class LoginPage {
   }
 
   async getLoginButtonText() {
-    const element = await this.driver.findElement(By.css(".login"));        
+    const element = await this.driver.findElement(By.css(".login"));
     const text = await element.getText();
 
     return text;
   }
 
   async getLoginButton() {
-    return await this.driver.findElement(By.id("btnLogin"));        
+    return await this.driver.findElement(By.id("btnLogin"));
   }
 
   async getEmailError() {
     return await this.driver.findElement(By.id("emailAddress-error"));
-  }  
+  }
+
+  async getPasswordError() {
+    return await this.driver.findElement(By.id("password-error"));
+  }
 }
