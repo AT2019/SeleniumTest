@@ -80,4 +80,14 @@ describe("Uinsure Login", () => {
 
     assert.equal(text, "");
   });
+
+  it("should take you to reset password instructions if you click the Reset your password link", async () => {
+    const resetPasswordLink = await loginPage.getPasswordReset();
+    await resetPasswordLink.click();
+
+    await driver.wait(
+      until.titleIs("Uinsure Members Area - Forgotten Password"),
+      3000
+    );
+  });
 });

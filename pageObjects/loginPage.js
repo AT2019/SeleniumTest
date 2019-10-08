@@ -36,4 +36,8 @@ export class LoginPage {
   async getInvalidPasswordMessage() {
     return await this.driver.findElement(By.css(".error-text"));
   }
+
+  async getPasswordReset() {
+    return await this.driver.findElement(By.linkText("Reset your password"));
+  }
 }
