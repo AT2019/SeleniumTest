@@ -54,6 +54,15 @@ describe("Uinsure Login", () => {
     assert.equal(text, "This field is required.");
   });
 
+  it("should show error message if an invalid email address is entered", async () => {
+    await loginPage.loginAs();
+
+    const invalidEmail = await loginPage.getInvalidEmailMessage();
+    const text = await invalidEmail.getText();
+
+    assert.equal(text, "");
+  });
+
   it("should show validation when no password is entered", async () => {
     await loginPage.loginAs();
 
@@ -61,5 +70,14 @@ describe("Uinsure Login", () => {
     const text = await passwordError.getText();
 
     assert.equal(text, "This field is required.");
+  });
+
+  it("should show error message if an invalid password is entered", async () => {
+    await loginPage.loginAs();
+
+    const invalidPassword = await loginPage.getInvalidPasswordMessage();
+    const text = await invalidPassword.getText();
+
+    assert.equal(text, "");
   });
 });

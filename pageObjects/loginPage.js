@@ -25,7 +25,15 @@ export class LoginPage {
     return await this.driver.findElement(By.id("emailAddress-error"));
   }
 
+  async getInvalidEmailMessage() {
+    return await this.driver.findElement(By.css(".error-text"));
+  }
+
   async getPasswordError() {
     return await this.driver.findElement(By.id("password-error"));
+  }
+
+  async getInvalidPasswordMessage() {
+    return await this.driver.findElement(By.css(".error-text"));
   }
 }
