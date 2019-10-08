@@ -90,4 +90,10 @@ describe("Uinsure Login", () => {
       3000
     );
   });
+
+  it("should take you back to the homepage if you click the Back button", async () => {
+    const backBtn = await loginPage.getBackToHomepage();
+
+    await driver.wait(until.titleIs("Uinsure"), 3000);
+  });
 });

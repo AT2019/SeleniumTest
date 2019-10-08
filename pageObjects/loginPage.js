@@ -40,4 +40,8 @@ export class LoginPage {
   async getPasswordReset() {
     return await this.driver.findElement(By.linkText("Reset your password"));
   }
+
+  async getBackToHomepage() {
+    return await this.driver.navigate().to("https://test.uinsure.co.uk/");
+  }
 }
