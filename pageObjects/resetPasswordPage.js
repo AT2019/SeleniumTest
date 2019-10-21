@@ -12,18 +12,18 @@ export class ResetPasswordPage {
   }
 
   async submitButton() {
-    return await this.driver.findElement(By.css(".submit"));
+    return await this.driver.findElement(By.id("changePassword"));
   }
 
   async getCurrentPasswordText() {
-    return await this.driver.findElement(By.css(".error"));
+    return await this.driver.findElement(By.id("currentPassword-error"));
   }
 
   async getNewPasswordText() {
-    return await this.driver.findElement(By.css(".error"));
+    return await this.driver.findElement(By.id("newPassword-error"));
   }
 
   async getConfirmNewPasswordText() {
-    return await this.driver.findElement(By.css(".error"));
+    return await this.driver.findElement(By.id("newPasswordConfirm-error"));
   }
 }

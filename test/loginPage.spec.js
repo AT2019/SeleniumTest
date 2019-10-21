@@ -38,8 +38,8 @@ describe("Uinsure Login", () => {
 
     const url = await driver.getCurrentUrl();
 
-    driver.findElement(By.id("emailAddress")).sendKeys("tim");
-    driver.findElement(By.id("password")).sendKeys("exercise19!");
+    driver.findElement(By.id("emailAddress")).sendKeys("t968249");
+    driver.findElement(By.id("password")).sendKeys("eZcwE2hxKfahDytX");
     driver.findElement(By.id("btnLogin")).click();
 
     await driver.wait(until.urlIs(authenticatedUrl), 3000);
@@ -56,6 +56,10 @@ describe("Uinsure Login", () => {
 
   it("should show error message if an invalid email address is entered", async () => {
     await loginPage.loginAs();
+
+    driver.findElement(By.id("emailAddress")).sendKeys("bob");
+    driver.findElement(By.id("password")).sendKeys("eZcwE2hxKfahDytX");
+    driver.findElement(By.id("btnLogin")).click();
 
     const invalidEmail = await loginPage.getInvalidEmailMessage();
     const text = await invalidEmail.getText();
@@ -74,6 +78,10 @@ describe("Uinsure Login", () => {
 
   it("should show error message if an invalid password is entered", async () => {
     await loginPage.loginAs();
+
+    driver.findElement(By.id("emailAddress")).sendKeys("t968249");
+    driver.findElement(By.id("password")).sendKeys("exercise");
+    driver.findElement(By.id("btnLogin")).click();
 
     const invalidPassword = await loginPage.getInvalidPasswordMessage();
     const text = await invalidPassword.getText();

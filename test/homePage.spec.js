@@ -1,9 +1,9 @@
-import '@babel/polyfill';
+import "@babel/polyfill";
 import chrome from "selenium-webdriver/chrome";
-import { path } from 'chromedriver';
+import { path } from "chromedriver";
 import { Builder, until } from "selenium-webdriver";
 import assert from "assert";
-import { HomePage } from '../pageObjects/homePage';
+import { HomePage } from "../pageObjects/homePage";
 
 let driver = null;
 let homePage = null;
@@ -12,9 +12,11 @@ const chromeOptions = new chrome.Options();
 chrome.setDefaultService(service);
 
 describe("Uinsure Home", () => {
-
   beforeEach(async () => {
-    driver = new Builder().forBrowser('chrome').setChromeOptions(chromeOptions).build();
+    driver = new Builder()
+      .forBrowser("chrome")
+      .setChromeOptions(chromeOptions)
+      .build();
     homePage = new HomePage(driver);
 
     await driver.get("https://test.uinsure.co.uk/");
@@ -24,7 +26,7 @@ describe("Uinsure Home", () => {
     await driver.quit();
   });
 
-  it("should show \"Login / Register\" button", async () => {
+  it('should show "Login / Register" button', async () => {
     const loginButton = await homePage.getLoginRegisterButton();
     const text = await loginButton.getText();
 
@@ -35,6 +37,6 @@ describe("Uinsure Home", () => {
     const loginButton = await homePage.getLoginRegisterButton();
     await loginButton.click();
 
-    await driver.wait(until.titleIs('Uinsure Members Area - Login'), 3000);    
-  }); 
+    await driver.wait(until.titleIs("Uinsure Members Area - Login"), 3000);
+  });
 });

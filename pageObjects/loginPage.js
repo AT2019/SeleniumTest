@@ -6,8 +6,24 @@ export class LoginPage {
   }
 
   async loginAs(email, password) {
+    const emailField = await this.getEmailAddressField();
+    emailField.sendKeys(email);
+
+    const passwordField = await this.getPasswordField();
+    passwordField.sendKeys(password);
+
     const loginButton = await this.getLoginButton();
     await loginButton.click();
+  }
+
+  async getEmailAddressField() {
+    const element = await this.driver.findElement(By.id("emailAddress"));
+    return element;
+  }
+
+  async getPasswordField() {
+    const element = await this.driver.findElement(By.id("password"));
+    return element;
   }
 
   async getLoginButtonText() {

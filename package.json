@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "test:reset": "mocha test/resetPasswordPage.spec.js"
   },
   "directories": {
     "test": "./test"
