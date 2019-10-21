@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "test": "mocha",
+    "test:login": "mocha test/loginPage.spec.js",
     "test:reset": "mocha test/resetPasswordPage.spec.js"
   },
   "directories": {

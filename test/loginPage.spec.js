@@ -38,15 +38,13 @@ describe("Uinsure Login", () => {
 
     const url = await driver.getCurrentUrl();
 
-    driver.findElement(By.id("emailAddress")).sendKeys("t968249");
-    driver.findElement(By.id("password")).sendKeys("eZcwE2hxKfahDytX");
-    driver.findElement(By.id("btnLogin")).click();
+    await loginPage.loginAs("t968249", "eZcwE2hxKfahDytX");
 
     await driver.wait(until.urlIs(authenticatedUrl), 3000);
   });
 
   it("should show validation when no email address entered", async () => {
-    await loginPage.loginAs();
+    await loginPage.loginAs("", "eZcwE2hxKfahDytX");
 
     const emailError = await loginPage.getEmailError();
     const text = await emailError.getText();
@@ -55,20 +53,16 @@ describe("Uinsure Login", () => {
   });
 
   it("should show error message if an invalid email address is entered", async () => {
-    await loginPage.loginAs();
+    await loginPage.loginAs("bob", "eZcwE2hxKfahDytX");
 
-    driver.findElement(By.id("emailAddress")).sendKeys("bob");
-    driver.findElement(By.id("password")).sendKeys("eZcwE2hxKfahDytX");
-    driver.findElement(By.id("btnLogin")).click();
-
-    const invalidEmail = await loginPage.getInvalidEmailMessage();
+    const invalidEmail = await loginPage.getInvalidLoginDetailsMessage();
     const text = await invalidEmail.getText();
 
-    assert.equal(text, "");
+    assert.equal(text, "Invalid Login details. Please Try Again");
   });
 
   it("should show validation when no password is entered", async () => {
-    await loginPage.loginAs();
+    await loginPage.loginAs("t968249", "");
 
     const passwordError = await loginPage.getPasswordError();
     const text = await passwordError.getText();
@@ -77,16 +71,12 @@ describe("Uinsure Login", () => {
   });
 
   it("should show error message if an invalid password is entered", async () => {
-    await loginPage.loginAs();
+    await loginPage.loginAs("t968249", "bob");
 
-    driver.findElement(By.id("emailAddress")).sendKeys("t968249");
-    driver.findElement(By.id("password")).sendKeys("exercise");
-    driver.findElement(By.id("btnLogin")).click();
-
-    const invalidPassword = await loginPage.getInvalidPasswordMessage();
+    const invalidPassword = await loginPage.getInvalidLoginDetailsMessage();
     const text = await invalidPassword.getText();
 
-    assert.equal(text, "");
+    assert.equal(text, "Invalid Login details. Please Try Again");
   });
 
   it("should take you to reset password instructions if you click the Reset your password link", async () => {
